@@ -1,10 +1,10 @@
 import java.util.*;
 
 class Zombie {
-  int hp = 100;
-  int bite_attack;
-  String name;
-  boolean is_dead = false;
+  private int hp = 100;
+  private int bite_attack;
+  private String name;
+  private boolean is_dead = false;
 
   public Zombie(String name) {
     this.name = name;
