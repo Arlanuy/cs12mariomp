@@ -1,7 +1,7 @@
-class  LinkedQueue {
+class  HeroTasksLinkedQueue {
     Node head, tail;
 
-    public LinkedQueue() {
+    public TasksLinkedQueue() {
       //this doesn't affect the program because
       //uninitialized reference objects are automatically
       //set to null
@@ -78,7 +78,9 @@ class  LinkedQueue {
     void printList() {
         int count_num = 1;
         for (Node rover = head;  rover != null; rover = rover.next) {
-            System.out.println(count_num + ": " + rover.task.description + "( " + rover.task.timeleft + " hour/s left)");
+            System.out.println(count_num + ": " + rover.task.description + " ( " + rover.task.timeleft + " hour/s left)");
+            if (rover.task.rechargetime != 0)
+            System.out.println();
             count_num++;
         }
         System.out.println();

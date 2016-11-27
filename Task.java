@@ -1,28 +1,12 @@
-public class Task {
-  String description;
-  int timeleft;
+package cs12mariomp;
+public  class Task {
+      protected String description;
 
-  public Task (String description, int timeleft) {
-    if (this.timeleft > 0) {
-      this.timeleft += timeleft;
-    }
+      public void setDescription(String description) {
+          this.description = description;
+      }
 
-    else {
-      this.description = description;
-      this.timeleft = timeleft;
-    }
-
-  }
-
-  public void doTask() {
-    timeleft -= 1;
-  }
-
-  public boolean isDone() {
-    return (timeleft <= 0) ? true : false;
-  }
-
-  public String toString() {
-    return description;
-  }
+      public String toString() {
+        return description;
+      }
 }

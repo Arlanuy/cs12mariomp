@@ -1,6 +1,7 @@
+package cs12mariomp;
 import java.util.*;
 
-class Zombie {
+public class Zombie {
   private int hp = 100;
   private int bite_attack;
   private String name;
@@ -14,30 +15,23 @@ class Zombie {
     return hp;
   }
 
-  public int biteAttack() {
-    this.bite_attack = hp/2;
+  public void setHP(int hp) {
+      this.hp = hp;
+  }
+
+  public void biteAttack(Hero main_hero) {
+    this.bite_attack = hp/10;
+    main_hero.wasBitten(bite_attack);
     this.hp -= 10;
-    return bite_attack;
+    System.out.println(main_hero.getName() + " was bitten and damaged by " + bite_attack + " hp ");
   }
 
   public String getName() {
     return name;
   }
 
-  public void eatPeople(int count) {
-    this.hp += (count*10);
-  }
-
-  public void walk(int km) {
-    this.hp -= km;
-  }
-
-  public void run(int km) {
-    this.hp -= (10 * km);
-  }
-
-  public void wasShot() {
-    this.hp -= 20;
+  public void wasShot(int hp_dec) {
+    this.hp -= hp_dec;
   }
 
   public void setOnFire() {
@@ -59,6 +53,6 @@ class Zombie {
   }
 
   public void printMe() {
-    System.out.println("Zombie " + getName() + " with hp " + getHP());
+    System.out.println(getName() + " with hp " + getHP());
   }
 }

@@ -1,6 +1,7 @@
+package cs12mariomp;
 import java.util.*;
 
-class Hero {
+public class Hero {
     private int hp = 100;
     private int attack_strength = 10;
     private String name;
@@ -15,8 +16,7 @@ class Hero {
       this.hp -= damage;
     }
 
-
-      public boolean isDeadHero()) {
+      public boolean isDeadHero() {
         if (this.hp <= 0) {
           return true;
         }
@@ -26,13 +26,27 @@ class Hero {
         }
       }
 
+     public void setHP(int hp) {
+         this.hp = hp;
+     }
 
     public int getHP(){
       return hp;
     }
 
-    public int shotAttack() {
-      return attack_strength;
+    public void shotAttack(Zombie zombie)  {
+        zombie.wasShot(attack_strength);
+        System.out.println(zombie.getName() + " was shot and damaged by " + attack_strength + " hp ");
+    }
+
+    public void superShotAttack(Zombie zombie, int damage)  {
+        zombie.wasShot(damage);
+        System.out.println(zombie.getName() + " was shot and damaged by " + damage + " hp ");
+    }
+
+    public void superFireAttack(Zombie zombie)  {
+        zombie.setOnFire();
+        System.out.println(zombie.getName() + " was shot and damaged by " +" 50 hp ");
     }
 
     public String getName() {

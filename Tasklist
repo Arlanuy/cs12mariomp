@@ -33,7 +33,7 @@ class Tasklist {
           head_task.doTask();
           if (head_task.isDone()) {
               tasks_queue.dequeue();
-              System.out.println(head_task + " done "); 
+              System.out.println(head_task + " done ");
           }
           break;
         case 'J':
