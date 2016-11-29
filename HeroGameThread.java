@@ -7,11 +7,12 @@ public class HeroGameThread extends GameObject {
 	BufferedImage img;
     InputStream picture_input_stream;
     Fire fire;
-    SimpleBullet simple_bullet;
     int recharge_count = 0;
     ZombiePila zombie_pila;
-    Point simple_bullet_point;
-	public HeroGameThread() {   // this is a constructor
+    Hero hero;
+    String name;
+    SimpleBullet simple_bullet;
+	public HeroGameThread(String name) {   // this is a constructor
 		this.x = 150; // called when object is created
 		this.y = 300; // i.e. Hero h = new **Hero()**;
 		this.c = Color.YELLOW; // used for initialization
@@ -19,7 +20,20 @@ public class HeroGameThread extends GameObject {
         to_where_facing = "right";
         picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange0.png");
 		img = MarioWindow.getImage(picture_input_stream);
+        this.name = name;
 	}
+
+    public void setSimpleBullet(SimpleBullet simple_bullet) {
+        this.simple_bullet = simple_bullet;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
 
     public String getDirection() {
         return direction;
@@ -27,6 +41,10 @@ public class HeroGameThread extends GameObject {
 
     public String getToWhereFacing() {
         return to_where_facing;
+    }
+
+    public ZombiePila getZombiePila() {
+        return zombie_pila;
     }
 
     public int getX() {
@@ -41,17 +59,7 @@ public class HeroGameThread extends GameObject {
         this.fire = fire;
     }
 
-    public void setSimpleBullet(SimpleBullet simple_bullet) {
-        this.simple_bullet = simple_bullet;
-    }
 
-    public  void setSimpleBulletPoint(Point simple_bullet_point) {
-        this.simple_bullet_point = simple_bullet_point;
-    }
-
-    public int bulletToZombieXDistance() {
-        return 1;
-    }
 
 	// what does the hero look like?
 	public void paint(Graphics2D g) {
@@ -111,8 +119,6 @@ public class HeroGameThread extends GameObject {
                     picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange0.png");
                     MarioWindow.delay(250);
                     img = MarioWindow.getImage(picture_input_stream);
-                    simple_bullet.setX(x);
-                    simple_bullet.setY(y);
                 }
                 else if (key.equals("C")) {
                     this.direction = "down";

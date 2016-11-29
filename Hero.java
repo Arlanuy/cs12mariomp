@@ -7,9 +7,12 @@ public class Hero {
     private String name;
     private String movement_direction;
     private boolean is_dead = false;
+    private HeroGameThread hgt;
 
-    public Hero(String name) {
+    public Hero(String name, HeroGameThread hgt) {
         this.name = name;
+        this.hgt = hgt;
+        hgt.setHero(this);
     }
 
     public void wasBitten(int damage) {

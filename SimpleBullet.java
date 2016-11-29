@@ -11,13 +11,17 @@ import java.awt.*;
      boolean appear = false;
      String direction;
      HeroGameThread hgt;
+     SimpleBulletSkillThread sb_skill;
 
-     public SimpleBullet(HeroGameThread hgt) {
+     public SimpleBullet(HeroGameThread hgt, SimpleBulletSkillThread sb_skill) {
          img = i1;
          this.hgt = hgt;
+         hgt.setSimpleBullet(this);
          this.x = hgt.getX();
          this.y = hgt.getY();
-         hgt.setSimpleBullet(this);
+         this.sb_skill = sb_skill;
+         sb_skill.setSimpleBullet(this);
+
      }
 
      public void setX(int x) {
@@ -26,6 +30,14 @@ import java.awt.*;
 
      public void setY(int y) {
          this.y = y;
+     }
+
+     public void setAppear(boolean appear) {
+         this.appear = appear;
+     }
+
+     public void setImg(BufferedImage img) {
+         this.img = img;
      }
 
      public void paint(Graphics2D g2d) {
@@ -47,8 +59,9 @@ import java.awt.*;
                  }
                  //appear = false;
              }
-             Point p = new Point(x + 150, y);
-             hgt.setSimpleBulletPoint(p);
+             Point p = new Point(x + 150, y + 100);
+             sb_skill.setSimpleBulletPoint(p);
+            // System.out.println("Naset naman bullet point ng sb_skill");
              MarioWindow.delay(100);
          }
      }
@@ -58,6 +71,8 @@ import java.awt.*;
 
          if (key.equals("R")) {
              direction = hgt.getToWhereFacing();
+             setX(hgt.getX());
+             setY(hgt.getY());
              if (direction.equals("left")) {
                  x = x - 100;
              }
@@ -67,23 +82,9 @@ import java.awt.*;
              }
 
              MarioWindow.delay(20);
-             appear = true;
-             while (hgt.bulletToZombieXDistance() < 210) { //210 is the horizontal acceptable distance of a hit
-                 picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange_simple_bullet2.png");
-                 MarioWindow.delay(300);
-                 img = MarioWindow.getImage(picture_input_stream);
-                 picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange_simple_bullet3.png");
-                 MarioWindow.delay(300);
-                 img = MarioWindow.getImage(picture_input_stream);
-                 picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange_simple_bullet4.png");
-                 MarioWindow.delay(300);
-                 img = MarioWindow.getImage(picture_input_stream);
-            }
-             picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange_end_simple_bullet.png");
-             MarioWindow.delay(200);
-             img = MarioWindow.getImage(picture_input_stream);
-             appear = false;
+            appear = true;
 
+             sb_skill.setBulletLoopReady();
          }
 
      }

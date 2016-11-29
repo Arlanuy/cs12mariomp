@@ -11,9 +11,9 @@ class ZombieFactory extends GameObject {
         while (true) {
             String zombie_name = "Zombie # " + count;
             this.q.enqueue(new Zombie(zombie_name));
-            int randomNum = 2 + (int)(Math.random() * 10);
+            //int randomNum = 2 + (int)(Math.random() * 50);
             count++;
-            MarioWindow.delay(randomNum);
+            MarioWindow.delay(5);
         }
     }
 }

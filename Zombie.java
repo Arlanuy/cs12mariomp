@@ -6,9 +6,20 @@ public class Zombie {
   private int bite_attack;
   private String name;
   private boolean is_dead = false;
+  private ZombieGameThread zgt;
 
   public Zombie(String name) {
     this.name = name;
+  }
+
+  public Zombie(String name, ZombieGameThread zgt) {
+    this.name = name;
+    this.zgt = zgt;
+    zgt.setZombie(this);
+  }
+
+  public ZombieGameThread getZGT() {
+      return zgt;
   }
 
   public int getHP(){
