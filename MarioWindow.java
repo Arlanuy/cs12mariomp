@@ -172,8 +172,6 @@ public class MarioWindow extends JFrame {
         }
     }
 
-
-
     public void startGame() {
         System.out.println("MarioWindow: Starting all game objects...");
         for (GameObject go : gameobjects) {

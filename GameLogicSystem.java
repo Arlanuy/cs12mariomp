@@ -91,7 +91,7 @@ public class GameLogicSystem {
         case 'Y':
             System.out.print("To what direction would you like to use your molotov: ");
             direction = takeStringAnswer();
-            hero_tasks_queue.enqueue(new HeroTask("Hero Shoot " + direction));
+            hero_tasks_queue.enqueue(new HeroTask("Hero Fire " + direction));
             boolean sapul_super_fire_sa_zombie = true;
             if (sapul_super_fire_sa_zombie == true) {
                 main_hero.superFireAttack(not_a_hero);

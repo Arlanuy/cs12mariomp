@@ -36,20 +36,4 @@ public class ZombieGameThread extends GameObject {
 			MarioWindow.delay(200);
 		}
 	}
-
-	// a key was pressed! how does your hero react?
-	public void keyPressed(String key) {
-		System.out.println(key + " whut ");
-		if (key.equals("A")) {
-			this.direction = "left";
-			x = x - 5;
-			picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/zombieleft.png");
-			img = MarioWindow.getImage(picture_input_stream);
-		} else if (key.equals("D")) {
-			this.direction = "right";
-			x = x + 5;
-			picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/zombieright.png");
-			img = MarioWindow.getImage(picture_input_stream);
-		}
-	}
 }
