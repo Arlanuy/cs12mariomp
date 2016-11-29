@@ -43,14 +43,21 @@ public class Zombie {
 
   public void wasShot(int hp_dec) {
     this.hp -= hp_dec;
+    if (hp <= 0) {
+        is_dead = true;
+    }
   }
 
   public void setOnFire() {
     this.hp -= 50;
+    if (hp <= 0) {
+        is_dead = true;
+    }
   }
 
   public void decapitate() {
     this.hp = 0;
+    is_dead = true;
   }
 
   public boolean isDeadUndead() {

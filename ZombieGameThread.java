@@ -3,19 +3,34 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.InputStream;
 public class ZombieGameThread extends GameObject {
-	int x; int y; Color c; String direction;
-	BufferedImage img;
-	InputStream picture_input_stream;
+	private int x;
+	private int y;
+	private Color c;
+	private String direction;
+	private BufferedImage img;
+	private InputStream picture_input_stream;
 	private Zombie zombie;
 	private String name;
+	private boolean appear = false;
 	public ZombieGameThread(String name) {   // this is a constructor
-		this.x = 1800; // called when object is created
-		this.y = 300; // i.e. Hero h = new **Hero()**;
 		this.c = Color.YELLOW; // used for initialization
 		this.direction = "left";
 		picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/zombieleft.png");
 		img = MarioWindow.getImage(picture_input_stream);
 		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setAppear(boolean appear) {
+		this.appear = appear;
+	}
+
+	public void setPointLocation(Point p) {
+		x = p.getX();
+		y = p.getY();
 	}
 
 	public Point getPointCM() {
@@ -30,7 +45,9 @@ public class ZombieGameThread extends GameObject {
 	public void paint(Graphics2D g) {
 		g.setColor(this.c);
 		//g.fillArc(x,y,30,30,0,360);
-		g.drawImage(this.img, x, y, 150, 120, null);
+		if (appear == true) {
+			 g.drawImage(this.img, x, y, 150, 120, null);
+		}
 	}
 
 	public void setZombie(Zombie zombie) {

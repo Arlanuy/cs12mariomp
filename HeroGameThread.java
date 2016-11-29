@@ -12,7 +12,7 @@ public class HeroGameThread extends GameObject {
     Hero hero;
     String name;
     SimpleBullet simple_bullet;
-	public HeroGameThread(String name) {   // this is a constructor
+	public HeroGameThread(String name, ZombiePila zombie_pila) {   // this is a constructor
 		this.x = 150; // called when object is created
 		this.y = 300; // i.e. Hero h = new **Hero()**;
 		this.c = Color.YELLOW; // used for initialization
@@ -21,6 +21,7 @@ public class HeroGameThread extends GameObject {
         picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strange0.png");
 		img = MarioWindow.getImage(picture_input_stream);
         this.name = name;
+        this.zombie_pila = zombie_pila;
 	}
 
     public void setSimpleBullet(SimpleBullet simple_bullet) {
