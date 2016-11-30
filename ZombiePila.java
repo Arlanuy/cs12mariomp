@@ -52,6 +52,45 @@ class  ZombiePila {
         }
     }
 
+    Zombie cutAnywhereDead() {
+        Zombie to_be_returned = new Zombie("Null Zombie");
+        if (head != null) {
+            if (head.zombie.isDeadUndead() == true) {
+                to_be_returned = head.zombie;
+                if (head == tail) {
+                    head = null;
+                    tail = null;
+                }
+
+                else {
+                    head = head.next;
+                }
+                printList();
+                System.out.println("Pumasok sa if statement");
+            }
+
+            else {
+                NodeZombie rover = head;
+                while (rover!= null) {
+                    if (rover.next != null) {
+                        if (rover.next.zombie.isDeadUndead() == true) {
+                        to_be_returned = rover.next.zombie;
+                        rover.next = rover.next.next;
+                        printList();
+                        System.out.println("Pumasok sa else if statement");
+                        }
+
+                        else {
+                            System.out.println("Pumasok sa else statement");
+                        }
+                    }
+                    rover = rover.next;
+                }
+            }
+        }
+        return to_be_returned;
+    }
+
     Zombie dequeue() {
         Zombie result = peek();
 

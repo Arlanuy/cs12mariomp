@@ -11,7 +11,8 @@ public class HeroGameThread extends GameObject {
     ZombiePila zombie_pila;
     Hero hero;
     String name;
-    SimpleBullet simple_bullet;
+    SimpleBullet[] simple_bullets_aggreg;
+    int bullet_turn = 1;
 	public HeroGameThread(String name, ZombiePila zombie_pila) {   // this is a constructor
 		this.x = 150; // called when object is created
 		this.y = 300; // i.e. Hero h = new **Hero()**;
@@ -24,8 +25,8 @@ public class HeroGameThread extends GameObject {
         this.zombie_pila = zombie_pila;
 	}
 
-    public void setSimpleBullet(SimpleBullet simple_bullet) {
-        this.simple_bullet = simple_bullet;
+    public void setSimpleBullets(SimpleBullet[] simple_bullets_aggreg) {
+        this.simple_bullets_aggreg = simple_bullets_aggreg;
     }
 
     public void setHero(Hero hero) {
@@ -72,6 +73,10 @@ public class HeroGameThread extends GameObject {
 	// what does your hero do?
 	public void run() {
 		while(true) {
+            Zombie killed = zombie_pila.cutAnywhereDead();
+            if (!killed.getName().equals("Null Zombie")) {
+                System.out.println("The zombie killed is with the name: " + killed.getName());
+            }
 			MarioWindow.delay(200);
 		}
 	}
@@ -165,6 +170,8 @@ public class HeroGameThread extends GameObject {
                     fire.setX(x);
                     fire.setY(y);
                 } else if (key.equals("R")) {
+                    //simple_bullets_aggreg[(bullet_turn - 1) % 20].this_bullet_turn = false;
+                    //simple_bullets_aggreg[bullet_turn % 20].this_bullet_turn = true;
                     picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/dr_strangeleft1.png");
                     MarioWindow.delay(250);
                     img = MarioWindow.getImage(picture_input_stream);

@@ -13,7 +13,9 @@ class LQVGO extends GameObject {
         while (rover != null) {
 			g2d.setFont( new Font( "Courier New", Font.PLAIN, 12 ) );
 			g2d.setColor( Color.GREEN );
-			g2d.drawString( String.format( "HP: %s", rover.zombie.getHP()), rover.zombie.getZGT().getPointCM().getX(), rover.zombie.getZGT().getPointCM().getY() + 90);
+            if (rover.zombie.isDeadUndead() == false) {
+                g2d.drawString( String.format( "HP: %s", rover.zombie.getHP()), rover.zombie.getZGT().getPointCM().getX(), rover.zombie.getZGT().getPointCM().getY() + 90);
+            }
             rover = rover.next;
         }
     }

@@ -57,6 +57,19 @@ public class ZombieGameThread extends GameObject {
 	// what does your hero do?
 	public void run() {
 		while(true) {
+			if(zombie != null && zombie.isDeadUndead() == true) {
+				picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/broken_head_zombie_left.png");
+				MarioWindow.delay(500);
+				img = MarioWindow.getImage(picture_input_stream);
+				picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/kneeling_zombie_left.png");
+				MarioWindow.delay(500);
+				img = MarioWindow.getImage(picture_input_stream);
+				picture_input_stream = getClass().getResourceAsStream("/cs12mariomp/pictures/almost_down_zombie_left.png");
+				MarioWindow.delay(500);
+				img = MarioWindow.getImage(picture_input_stream);
+				MarioWindow.delay(500);
+				appear = false;
+			}
 			if (this.direction.equals("right")) {
 				x = x + 10;
 			}

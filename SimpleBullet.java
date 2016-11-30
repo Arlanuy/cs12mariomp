@@ -16,7 +16,6 @@ import java.awt.*;
      public SimpleBullet(HeroGameThread hgt, SimpleBulletSkillThread sb_skill) {
          img = i1;
          this.hgt = hgt;
-         hgt.setSimpleBullet(this);
          this.x = hgt.getX();
          this.y = hgt.getY();
          this.sb_skill = sb_skill;

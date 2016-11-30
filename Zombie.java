@@ -26,14 +26,13 @@ public class Zombie {
     return hp;
   }
 
-  public void setHP(int hp) {
-      this.hp = hp;
-  }
-
   public void biteAttack(Hero main_hero) {
     this.bite_attack = hp/10;
     main_hero.wasBitten(bite_attack);
     this.hp -= 10;
+    if (hp <= 0) {
+        is_dead = true;
+    }
     System.out.println(main_hero.getName() + " was bitten and damaged by " + bite_attack + " hp ");
   }
 
@@ -60,14 +59,15 @@ public class Zombie {
     is_dead = true;
   }
 
-  public boolean isDeadUndead() {
-    if (this.hp <= 0) {
-      return true;
-    }
+  public void setDeadUndead(boolean is_dead) {
+      this.is_dead = is_dead;
+  }
 
-    else {
-      return false;
-    }
+  public boolean isDeadUndead() {
+      if (is_dead == true) {
+          System.out.println(name + " is dead unfortunately");
+      }
+    return is_dead;
   }
 
   public void printMe() {

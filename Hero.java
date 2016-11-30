@@ -29,10 +29,6 @@ public class Hero {
         }
       }
 
-     public void setHP(int hp) {
-         this.hp = hp;
-     }
-
     public int getHP(){
       return hp;
     }
